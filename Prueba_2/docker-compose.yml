@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: users_db
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/database.sql://docker-entrypoint-initdb.d/database.sql
+    
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    environment:
+      - ADMIN_USER=admin
+      - ADMIN_PASS=1234
+
+volumes:
+  mysql_data:

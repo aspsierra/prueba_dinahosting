@@ -20,6 +20,7 @@ use Services\FibonacciService;
 
 
 function run(){
+    echo password_hash('1234', PASSWORD_DEFAULT);
     global $argv;
 
     if (count($argv) === 2 && $argv[1] === 'month') {
