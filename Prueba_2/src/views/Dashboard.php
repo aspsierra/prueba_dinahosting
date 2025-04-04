@@ -6,6 +6,7 @@ namespace views;
 ?>
 
 <a href="index.php?action=logout">Cerrar Sesión</a>
+<a href="index.php?action=addUser">Añadir Usuario</a>
 <table>
     <thead>
         <tr>

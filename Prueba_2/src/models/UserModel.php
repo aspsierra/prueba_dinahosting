@@ -67,4 +67,34 @@ class UserModel {
         }
     }
 
+    public function addUser($username, $password, $host, $privileges) {
+        try {
+            $query = "CREATE USER '$username'@'$host' IDENTIFIED BY :password";
+            $stmt = $this->db->prepare($query);
+    
+            $stmt->bindParam(":password", $password);
+    
+            if ($stmt->execute()) {
+                $this->setPrivileges($username, $privileges, $host);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (\PDOException $err) {
+            throw $err;
+        }
+    }
+
+    private function setPrivileges($username, $privileges, $host) {
+        try {
+            $query = "GRANT " . $privileges . " ON *.* TO '$username'@'$host'";
+            $stmt = $this->db->prepare($query);
+            return $stmt->execute();
+        } catch (\PDOException $th) {
+            throw new \PDOException("Ocurrió un error,\nAsegúrate de que los privilegios están bien escritos y separados por comas \n(Ej: SELECT, INSERT)", 1);
+        }
+    }
+
+
+
 }

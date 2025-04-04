@@ -23,7 +23,9 @@ if (isset($_GET['action'])) {
     } elseif ($action == 'logout') {
         $authController->logout();
     } elseif ($action == 'addUser' && $_SERVER['REQUEST_METHOD'] == 'POST') {
-        $userController->addUser($_POST['user'], $_POST['password'], $_POST['host'], $_POST['privileges']);
+        $userController->addUser($_POST['username'], $_POST['password'], $_POST['host'], $_POST['privileges']);
+    } elseif($action == 'addUser') {
+        $userController->showAddUserForm();
     } elseif ($action == 'deleteUser' && $_SERVER['REQUEST_METHOD'] == 'POST') {
         $userController->deleteUser($_POST['user'], 'localhost');
     } elseif ($action == 'details' && isset($_GET['user']) && isset($_GET['host'])){
