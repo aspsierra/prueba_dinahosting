@@ -3,10 +3,34 @@ require_once 'utils' . DIRECTORY_SEPARATOR . 'autoloader.php';
 
 session_start();
 
+use controllers\AuthController;
+use controllers\UserController;
+use services\Database\DBHandler;
 
-if (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true) {
-    header("Location: views/Dashboard.php");
+$env = parse_ini_file('.env');
+$db = new DBHandler();
+$pdo = $db->getConnection();
+
+$action = isset($_GET['action']) ? $_GET['action'] : 'login';
+
+$userController = new UserController($pdo);
+$authController = new AuthController($env);
+
+if (isset($_GET['action'])) {
+    $action = $_GET['action'];
+    if ($action == 'login' && $_SERVER['REQUEST_METHOD'] == 'POST') {
+        $authController->login($_POST['user'], $_POST['password']);
+    } elseif ($action == 'logout') {
+        $authController->logout();
+    } elseif ($action == 'addUser' && $_SERVER['REQUEST_METHOD'] == 'POST') {
+        $userController->addUser($_POST['user'], $_POST['password'], $_POST['host'], $_POST['privileges']);
+    } elseif ($action == 'deleteUser' && $_SERVER['REQUEST_METHOD'] == 'POST') {
+        $userController->deleteUser($_POST['user'], 'localhost');
+    }
+} else {
+    if (!$authController->isLoggedIn()) {
+        $authController->showLogin();
+    } else {
+        $userController->listUsers();
+    }
 }
-
-header("Location: views/LoginPage.php");
-?>
