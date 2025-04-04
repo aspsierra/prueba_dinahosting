@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    margin: 0;
+    font-family:'Roboto', Times, serif;
+    height: 100dvh;
+    width: 100dvw;
+
+}
+
+input {
+    font-size: medium;
+    font-family:'Roboto', Times, serif;
+    padding: 5px;
+    width: 100%;
+    height: 25px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+button {
+    font-family:'Roboto', Times, serif;
+    font-size: medium;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+
+
+.loginPage {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+
+    form {
+        margin: auto;
+        max-width: 50%;
+    }
+
+
+    button {
+        background-color: aqua;
+        border: none;
+
+    }
+    button:hover {
+        cursor: pointer;
+        filter: brightness(80%);
+    }
+
+}
+
+.topBar {
+    padding: 5px 20px;
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1px solid lightgray;
+
+    a {
+        border: 2px solid black;
+        border-radius: 5px;
+        padding: 10px 20px;
+        color: black;
+        text-decoration: none;
+        background-color: white;
+    }
+    a:hover {
+        background-color: gray;
+    }
+}
+
+.usersTable {
+    margin: auto;
+    width: 100%;
+    max-width: 70dvw;
+
+    .tableActions{
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .addUserBtn {
+        text-align: right;
+        font-size:medium;
+        background-color: aqua;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        color: black;
+        text-decoration: none;
+    }
+    .addUserBtn:hover {
+        cursor: pointer;
+        filter: brightness(80%);
+    }
+
+    table {
+        margin-top: 10px;
+        border-collapse: collapse;
+
+        td {
+            width: 250px;
+            height: 50px;
+            text-align: center;
+        }
+    }
+    thead {
+        font-size: larger;
+    }
+    tbody {
+
+        tr:hover {
+            background-color: lightgray;
+        }
+    }
+
+    .actions {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        a {
+            border: 2px solid aqua;
+            border-radius: 5px;
+            padding: 10px 20px;
+            color: black;
+            text-decoration: none;
+        }
+
+        a:hover {
+            background-color: aqua;
+        }
+
+        button {
+            border: 2px solid red;
+            color: red;
+            background-color: white;
+        }
+
+        button:hover {
+            background-color: red;
+            color: white;
+            cursor: pointer;
+        }
+    }
+}
+
+.userDetails {
+    margin: auto;
+    width: 100%;
+    max-width: 70dvw;
+
+    button {
+        border: 2px solid red;
+        color: red;
+        background-color: white;
+    }
+
+    button:hover {
+        background-color: red;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.addUserForm {
+    margin: auto;
+    width: 100%;
+    max-width: 70dvw;
+
+    button {
+        margin-top: 10px;
+        background-color: aqua;
+        border: none;
+
+    }
+    button:hover {
+        cursor: pointer;
+        filter: brightness(80%);
+    }
+
+
+}
+
+.errorMsg {
+    color: red;
+}
+
+.toast {
+    position: absolute;
+    z-index: 10;
+    top: 10px;
+    left: 10px;
+    padding: 20px 30px;
+    border-radius: 10px;
+}
+
+.success {
+    color: white;
+    background-color: green;
+}
+
+.error {
+    color: white;
+    background-color: red;
+}
+
