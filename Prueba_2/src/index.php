@@ -26,6 +26,8 @@ if (isset($_GET['action'])) {
         $userController->addUser($_POST['user'], $_POST['password'], $_POST['host'], $_POST['privileges']);
     } elseif ($action == 'deleteUser' && $_SERVER['REQUEST_METHOD'] == 'POST') {
         $userController->deleteUser($_POST['user'], 'localhost');
+    } elseif ($action == 'details' && isset($_GET['user']) && isset($_GET['host'])){
+        $userController->getUserDetails($_GET['user'], $_GET['host']);
     }
 } else {
     if (!$authController->isLoggedIn()) {

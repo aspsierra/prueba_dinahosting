@@ -37,10 +37,9 @@ class AuthController {
         }
     }
 
-    // Método para cerrar sesión
     public function logout() {
         session_destroy();
-        header("Location: index.php"); // Redirige al inicio después de cerrar sesión
+        header("Location: index.php");
     }
 
 }
