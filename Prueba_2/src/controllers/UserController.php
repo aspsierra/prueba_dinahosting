@@ -34,6 +34,7 @@ class UserController {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             try {
                 if ($this->user->addUser($username, $hashedPassword, $host, $privileges)) {
+                    $_SESSION['info'] = "Se creó el usuario $username";
                     header("Location: index.php");
                 } else {
                     $_SESSION['err'] = "Hubo un error al agregar el usuario.";
@@ -43,6 +44,18 @@ class UserController {
                 $_SESSION['err'] = $err->getMessage();
                 $this->showAddUserForm();
             }
+        }
+    }
+
+    public function deleteUser($user, $host){
+
+        try {
+           if ($this->user->deleteUser($user, $host)) {
+                $_SESSION['info'] = "Usuario eliminado";
+                header("Location: index.php");
+           }
+        } catch (\PDOException $th) {
+            $_SESSION['err'] = "Ocurrió un error al eliminar el usuario";
         }
 
     }

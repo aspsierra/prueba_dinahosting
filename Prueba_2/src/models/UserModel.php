@@ -94,7 +94,16 @@ class UserModel {
             throw new \PDOException("Ocurrió un error,\nAsegúrate de que los privilegios están bien escritos y separados por comas \n(Ej: SELECT, INSERT)", 1);
         }
     }
-
+    
+    
+    public function deleteUser($username, $host) {
+        try {
+            $this->db->exec("DROP USER '$username'@'$host'");
+            return true;
+        } catch (\PDOException $e) {
+            return $e->getMessage();
+        }
+    }
 
 
 }

@@ -27,7 +27,7 @@ if (isset($_GET['action'])) {
     } elseif($action == 'addUser') {
         $userController->showAddUserForm();
     } elseif ($action == 'deleteUser' && $_SERVER['REQUEST_METHOD'] == 'POST') {
-        $userController->deleteUser($_POST['user'], 'localhost');
+        $userController->deleteUser($_POST['user'], $_POST['host']);
     } elseif ($action == 'details' && isset($_GET['user']) && isset($_GET['host'])){
         $userController->getUserDetails($_GET['user'], $_GET['host']);
     }

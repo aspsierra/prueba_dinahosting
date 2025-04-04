@@ -1,9 +1,6 @@
 <?php
 $err = isset($_SESSION["err"]) ? $_SESSION["err"] : "";
 unset($_SESSION["err"]);
-if (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true) {
-    //header("Location: ./Dashboard.php");
-}
 ?>
 
 <h1>Iniciar Sesión</h1>
